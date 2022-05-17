@@ -5,9 +5,13 @@ class AppTheme {
   //
   ThemeData themes = ThemeData(
     primarySwatch: Colors.blue,
-    appBarTheme: const AppBarTheme(
+    appBarTheme: AppBarTheme(
       elevation: 0.00,
       centerTitle: true,
+      titleTextStyle: AppStyle.mainTitle.copyWith(color: Colors.black),
+      iconTheme: const IconThemeData(
+        color: Colors.black,
+      ),
       backgroundColor: AppStyle.mainColor,
     ),
   );

@@ -26,7 +26,7 @@ class AppStyle {
     fontWeight: FontWeight.bold,
   );
   static TextStyle mainContent = GoogleFonts.nunito(
-    fontSize: 16.0,
+    fontSize: 14.0,
     fontWeight: FontWeight.normal,
   );
   static TextStyle dateTitle = GoogleFonts.nunito(

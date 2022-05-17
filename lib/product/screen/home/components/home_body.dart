@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hucel_core/hucel_core.dart';
 import 'package:note_app/constants.dart/app_string.dart';
+import 'package:note_app/product/screen/note_reader/note_reader.dart';
 import 'package:note_app/product/widget/card/note_card.dart';
 
 class HomeBody extends StatefulWidget {
@@ -45,7 +46,14 @@ class _HomeBodyState extends State<HomeBody> {
               children: snapshot.data!.docs
                   .map(
                     (note) => noteCard(
-                      onTap: (() {}),
+                      onTap: (() {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: ((context) => NoteReaderScreen(doc: note)),
+                          ),
+                        );
+                      }),
                       doc: note,
                     ),
                   )

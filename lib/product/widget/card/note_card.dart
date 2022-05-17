@@ -1,13 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:note_app/constants.dart/app_string.dart';
 import 'package:note_app/constants.dart/app_style.dart';
 
 Widget noteCard({Function()? onTap, required QueryDocumentSnapshot doc}) {
   //
-  int colorId = doc['color_id'];
-  String noteTitle = doc['note_title'];
-  String creationDate = doc['creating_date'];
-  String noteContent = doc['note_content'];
+  final appString = AppString.instance;
   //
   return InkWell(
     onTap: onTap,
@@ -15,25 +13,26 @@ Widget noteCard({Function()? onTap, required QueryDocumentSnapshot doc}) {
       padding: const EdgeInsets.all(8.0),
       margin: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: AppStyle.cardsColor[colorId],
-        borderRadius: BorderRadius.circular(8.0),
+        color: AppStyle.cardsColor[doc[appString.colorId]],
+        borderRadius: BorderRadius.circular(16.0),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(noteTitle, style: AppStyle.mainTitle),
-          const SizedBox(
-            height: 4.0,
+          Center(
+            child: Text(doc[appString.noteTitle], style: AppStyle.mainTitle),
           ),
-          Text(creationDate, style: AppStyle.dateTitle),
-          const SizedBox(
-            height: 8.0,
-          ),
+          const Divider(),
           Text(
-            noteContent,
+            "  ${doc[appString.noteContent]}",
             style: AppStyle.mainContent,
+            maxLines: 3,
             overflow: TextOverflow.ellipsis,
-            maxLines: 4,
+          ),
+          const Spacer(),
+          const Divider(),
+          Center(
+            child: Text(doc[appString.creationDate], style: AppStyle.dateTitle),
           ),
         ],
       ),
