@@ -16,4 +16,5 @@ class AppTheme {
     ),
   );
   //
+  ThemeData darkTheme = ThemeData.dark().copyWith();
 }

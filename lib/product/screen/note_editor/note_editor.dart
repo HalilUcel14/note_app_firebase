@@ -5,7 +5,6 @@ import 'package:note_app/constants.dart/app_style.dart';
 import 'package:note_app/product/screen/note_editor/components/note_editor_body.dart';
 
 import '../../../constants.dart/app_string.dart';
-import '../home/home_screen.dart';
 
 late final TextEditingController textTitleController;
 late final TextEditingController textContentController;
@@ -32,9 +31,8 @@ class NoteEditorScreen extends StatelessWidget {
             _appString.noteContent: textContentController.text,
             _appString.colorId: colorId,
           }).then((value) {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const HomeScreen()));
-          });
+            Navigator.pop(context);
+          }).catchError((error) => print("$error"));
         },
         child: const Icon(
           Icons.save,

@@ -32,7 +32,14 @@ Widget noteCard({Function()? onTap, required QueryDocumentSnapshot doc}) {
           const Spacer(),
           const Divider(),
           Center(
-            child: Text(doc[appString.creationDate], style: AppStyle.dateTitle),
+            child: SizedBox(
+              width: double.infinity,
+              child: Text(
+                doc[appString.creationDate],
+                style: AppStyle.dateTitle,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
           ),
         ],
       ),
